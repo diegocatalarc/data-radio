@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-// Cambia `site` por tu dominio final (Cloudflare Pages, GitHub Pages, etc.)
+// En GitHub Actions, SITE_URL y BASE_PATH los define el workflow de despliegue.
+// Con dominio propio: SITE_URL=https://tudominio.com y BASE_PATH vacío.
 export default defineConfig({
-  site: 'https://meridiano.example',
+  site: process.env.SITE_URL || 'https://meridiano.example',
+  base: process.env.BASE_PATH || '/',
   devToolbar: { enabled: false },
 });

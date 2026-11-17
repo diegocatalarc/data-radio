@@ -15,6 +15,14 @@ npm run build                             # genera site/dist
 Las 7 notas `demo: true` son de ejemplo: bórralas (`site/src/content/notas/demo-*.md`) cuando publiques reales.
 Despliegue: Cloudflare Pages / GitHub Pages con build `cd site && npm ci && npm run build`, salida `site/dist`. Cambia `site` en `astro.config.mjs`.
 
+## Puesta en marcha en GitHub (una sola vez)
+1. Crea un repo vacío y sube este proyecto.
+2. **Settings → Pages → Source: GitHub Actions.** El sitio se publica solo con cada cambio en `main` (`deploy.yml`).
+3. **Settings → Secrets and variables → Actions → New repository secret:** `DEEPSEEK_API_KEY`.
+4. **Settings → Actions → General → Workflow permissions:** marca *Read and write* y *Allow GitHub Actions to create and approve pull requests*.
+5. **Actions → "Meridiano diario" → Run workflow** para probar sin esperar al cron.
+Cada día se abre un PR con las notas; al fusionarlo se despliega el sitio. (Si pasas a modo automático con push directo del bot, el despliegue no se dispara solo: añade `workflow_run` o usa un token propio.)
+
 ## Pipeline
 ```bash
 cd pipeline && python -m venv .venv && .venv/bin/pip install -e ".[dev]"

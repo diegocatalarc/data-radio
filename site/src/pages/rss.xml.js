@@ -7,7 +7,7 @@ export async function GET(context) {
     title: 'Meridiano',
     description: 'Lo relevante del análisis de datos en Chile, Australia, Nueva Zelanda y Europa.',
     site: context.site,
-    items: notas.map((n) => ({ title: n.data.title, description: n.data.dek, pubDate: n.data.date, link: `/nota/${n.id}/` })),
+    items: notas.map((n) => ({ title: n.data.title, description: n.data.dek, pubDate: n.data.date, link: `${import.meta.env.BASE_URL.replace(/\/$/, '')}/nota/${n.id}/` })),
     customData: '<language>es</language>',
   });
 }

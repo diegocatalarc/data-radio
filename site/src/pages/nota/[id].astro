@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { regionByKey } from '../../regions';
+import { u } from '../../url';
 
 export async function getStaticPaths() {
   const notas = await getCollection('notas');
@@ -16,7 +17,7 @@ const date = d.date.toLocaleDateString('es-CL', { day: 'numeric', month: 'long',
 <Base title={d.title} description={d.dek} region={d.region}>
   <div class="progress"></div>
   <article class="article">
-    <a href="/" class="back">← Portada</a>
+    <a href={u('/')} class="back">← Portada</a>
     <div class="meta"><span>{region.name}</span><span>{date}</span></div>
     <h1>{d.title}</h1>
     <p class="dek">{d.dek}</p>

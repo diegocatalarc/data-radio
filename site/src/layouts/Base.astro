@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Globe from '../components/Globe.astro';
 import { regions } from '../regions';
+import { u } from '../url';
 
 interface Props { title?: string; description?: string; region?: string; home?: boolean; }
 const { title, description = 'Lo relevante del análisis de datos en Chile, Australia, Nueva Zelanda y Europa. Solo cuando importa.', region = '', home = false } = Astro.props;
@@ -15,7 +16,7 @@ const fullTitle = title ? `${title} — Meridiano` : 'Meridiano — Datos en cua
     <meta name="description" content={description} />
     <meta name="theme-color" content="#07090d" />
     <title>{fullTitle}</title>
-    <link rel="alternate" type="application/rss+xml" title="Meridiano" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Meridiano" href={u('/rss.xml')} />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='7' fill='%23ff7a59'/></svg>" />
   </head>
   <body>
@@ -25,9 +26,9 @@ const fullTitle = title ? `${title} — Meridiano` : 'Meridiano — Datos en cua
     <div class="grain"></div>
 
     <header class="site-header">
-      <a href="/" class="brand"><i></i>Meridiano</a>
+      <a href={u('/')} class="brand"><i></i>Meridiano</a>
       <nav class="nav-links" aria-label="Principal">
-        <a href="/#cl">Chile</a><a href="/#au">Australia</a><a href="/#nz">N. Zelanda</a><a href="/#eu">Europa</a><a href="/archivo">Archivo</a>
+        <a href={u('/#cl')}>Chile</a><a href={u('/#au')}>Australia</a><a href={u('/#nz')}>N. Zelanda</a><a href={u('/#eu')}>Europa</a><a href={u('/archivo')}>Archivo</a>
       </nav>
     </header>
 
