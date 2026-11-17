@@ -15,13 +15,12 @@ npm run build                             # genera site/dist
 Las 7 notas `demo: true` son de ejemplo: bórralas (`site/src/content/notas/demo-*.md`) cuando publiques reales.
 Despliegue: Cloudflare Pages / GitHub Pages con build `cd site && npm ci && npm run build`, salida `site/dist`. Cambia `site` en `astro.config.mjs`.
 
-## Puesta en marcha en GitHub (una sola vez)
-1. Crea un repo vacío y sube este proyecto.
-2. **Settings → Pages → Source: GitHub Actions.** El sitio se publica solo con cada cambio en `main` (`deploy.yml`).
-3. **Settings → Secrets and variables → Actions → New repository secret:** `DEEPSEEK_API_KEY`.
-4. **Settings → Actions → General → Workflow permissions:** marca *Read and write* y *Allow GitHub Actions to create and approve pull requests*.
-5. **Actions → "Meridiano diario" → Run workflow** para probar sin esperar al cron.
-Cada día se abre un PR con las notas; al fusionarlo se despliega el sitio. (Si pasas a modo automático con push directo del bot, el despliegue no se dispara solo: añade `workflow_run` o usa un token propio.)
+## Puesta en marcha en GitHub (2 ajustes, una sola vez)
+1. **Settings → Pages → Source: GitHub Actions.**
+2. **Settings → Secrets and variables → Actions → New repository secret:** `DEEPSEEK_API_KEY`.
+
+Luego, pestaña **Actions → "Meridiano diario" → Run workflow**. Cada día a las 10:17 UTC genera las notas, las guarda en el repo y republica el sitio, todo en el mismo workflow.
+La publicación es automática: revisa de vez en cuando las notas nuevas (o el commit "Notas del día") y ajusta `min_score` y los prompts si ves errores.
 
 ## Pipeline
 ```bash
@@ -40,7 +39,7 @@ Todo se ajusta en `pipeline/config.yaml`: fuentes, modelos, umbral `min_score`, 
 - El **revisor** contrasta cada afirmación con el texto fuente + control determinista: toda cifra debe aparecer en la fuente.
 - El **editor** no puede introducir cifras nuevas (si lo hace, se conserva la versión verificada).
 - El texto de las fuentes se trata como datos (defensa básica contra prompt injection).
-- GitHub Actions (`.github/workflows/daily.yml`) abre un **PR diario**: tú apruebas. Cuando confíes, cambia a modo automático (instrucciones en el archivo). Añade el secreto `DEEPSEEK_API_KEY`.
+- GitHub Actions (`.github/workflows/daily.yml`) genera, guarda y publica solo. Si prefieres aprobar cada nota, cambia el paso "Guardar notas nuevas" por `peter-evans/create-pull-request` y habilita PRs en Settings → Actions → General.
 
 ## Pendiente / ideas
 - Más fuentes chilenas (DF, Banco Central, INE, CMF) cuando tengas su RSS.
