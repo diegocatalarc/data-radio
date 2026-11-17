@@ -1,0 +1,182 @@
+<canvas id="globe" aria-hidden="true"></canvas>
+
+<script>
+  import { regions } from '../regions';
+
+  const canvas = document.getElementById('globe') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rad = Math.PI / 180;
+
+  // Esfera de puntos (espiral de Fibonacci)
+  const N = 1700;
+  const pts: [number, number][] = [];
+  for (let i = 0; i < N; i++) {
+    const y = 1 - (2 * (i + 0.5)) / N;
+    pts.push([Math.asin(y), i * Math.PI * (3 - Math.sqrt(5))]); // lat, lon (rad)
+  }
+
+  let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 0, mobile = false;
+  function resize() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    mobile = W < 900;
+    cx = mobile ? W * 0.5 : W * 0.7;
+    cy = mobile ? H * 0.5 : H * 0.52;
+    R = mobile ? Math.min(W * 0.78, H * 0.42) : Math.min(W * 0.34, H * 0.44);
+  }
+  addEventListener('resize', resize);
+  resize();
+
+  // Estado de rotación
+  let lon0 = -70 * rad, lat0 = 20 * rad;
+  let tLon = lon0, tLat = lat0;
+  let px = 0, py = 0, tpx = 0, tpy = 0;
+  addEventListener('pointermove', (e) => { tpx = e.clientX / W - 0.5; tpy = e.clientY / H - 0.5; }, { passive: true });
+
+  const angDiff = (a: number, b: number) => Math.atan2(Math.sin(a - b), Math.cos(a - b));
+
+  function project(lat: number, lon: number, lift = 1): [number, number, number] {
+    const dl = lon - lon0;
+    const cl = Math.cos(lat);
+    const x = cl * Math.sin(dl), y = Math.sin(lat), z = cl * Math.cos(dl);
+    const yy = y * Math.cos(lat0) - z * Math.sin(lat0);
+    const zz = y * Math.sin(lat0) + z * Math.cos(lat0);
+    return [cx + x * R * lift, cy - yy * R * lift, zz * lift];
+  }
+
+  function vec(lat: number, lon: number): [number, number, number] {
+    return [Math.cos(lat) * Math.sin(lon), Math.sin(lat), Math.cos(lat) * Math.cos(lon)];
+  }
+  function projectVec(v: [number, number, number], lift: number): [number, number, number] {
+    // rotación inversa a project(): pasamos por lat/lon
+    const lat = Math.asin(Math.max(-1, Math.min(1, v[1])));
+    const lon = Math.atan2(v[0], v[2]);
+    return project(lat, lon, lift);
+  }
+
+  let accent = '#9aa3b5', frame = 0;
+  const parseAccent = () => (accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || accent);
+
+  function draw(t: number) {
+    ctx.clearRect(0, 0, W, H);
+    const key = document.documentElement.dataset.region || '';
+    const active = regions.find((r) => r.key === key);
+    if (frame++ % 6 === 0) parseAccent();
+
+    // objetivo de rotación
+    if (active) {
+      tLon = active.lon * rad + (reduce ? 0 : Math.sin(t / 5200) * 0.05);
+      tLat = active.lat * rad * 0.75;
+    } else if (!reduce) {
+      tLon += 0.0016; tLat = 18 * rad;
+    }
+    if (reduce) { lon0 = tLon; lat0 = tLat; }
+    else {
+      lon0 += angDiff(tLon, lon0) * 0.045;
+      lat0 += (tLat - lat0) * 0.045;
+    }
+    px += (tpx - px) * 0.05; py += (tpy - py) * 0.05;
+    const baseLon = lon0, baseLat = lat0;
+    lon0 += px * 0.12; lat0 += py * 0.08;
+
+    // halo + disco
+    const g = ctx.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.1, cx, cy, R * 1.02);
+    g.addColorStop(0, 'rgba(255,255,255,0.045)');
+    g.addColorStop(1, 'rgba(255,255,255,0.0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fill();
+    ctx.strokeStyle = 'rgba(236,233,226,0.14)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.stroke();
+
+    // retícula
+    ctx.lineWidth = 0.6;
+    const line = (fn: (s: number) => [number, number]) => {
+      let open = false;
+      ctx.beginPath();
+      for (let s = 0; s <= 72; s++) {
+        const [lat, lon] = fn(s / 72);
+        const [x, y, z] = project(lat, lon);
+        if (z > 0) { open ? ctx.lineTo(x, y) : ctx.moveTo(x, y); open = true; } else open = false;
+      }
+      ctx.stroke();
+    };
+    ctx.strokeStyle = 'rgba(236,233,226,0.07)';
+    for (let m = 0; m < 12; m++) line((s) => [(-90 + 180 * s) * rad, m * 30 * rad]);
+    for (let p = -60; p <= 60; p += 30) line((s) => [p * rad, s * 2 * Math.PI]);
+
+    // puntos
+    for (let i = 0; i < N; i++) {
+      const [x, y, z] = project(pts[i][0], pts[i][1]);
+      if (z < -0.05) {
+        ctx.fillStyle = 'rgba(236,233,226,0.05)';
+        ctx.fillRect(x, y, 1, 1);
+      } else {
+        const a = 0.18 + 0.7 * Math.max(z, 0);
+        ctx.fillStyle = `rgba(236,233,226,${a.toFixed(3)})`;
+        const s = 0.7 + z * 0.9;
+        ctx.fillRect(x - s / 2, y - s / 2, s, s);
+      }
+    }
+
+    // arcos desde la región activa
+    if (active) {
+      const a = vec(active.lat * rad, active.lon * rad);
+      for (const r of regions) {
+        if (r.key === active.key) continue;
+        const b = vec(r.lat * rad, r.lon * rad);
+        const dot = Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]));
+        const om = Math.acos(dot);
+        if (om < 0.01) continue;
+        ctx.strokeStyle = accent; ctx.globalAlpha = 0.5; ctx.lineWidth = 1;
+        let open = false;
+        ctx.beginPath();
+        for (let s = 0; s <= 48; s++) {
+          const u = s / 48;
+          const k1 = Math.sin((1 - u) * om) / Math.sin(om), k2 = Math.sin(u * om) / Math.sin(om);
+          const v: [number, number, number] = [k1 * a[0] + k2 * b[0], k1 * a[1] + k2 * b[1], k1 * a[2] + k2 * b[2]];
+          const [x, y, z] = projectVec(v, 1 + 0.07 * Math.sin(Math.PI * u) * (om / Math.PI + 0.3));
+          if (z > 0.14) { open ? ctx.lineTo(x, y) : ctx.moveTo(x, y); open = true; } else open = false;
+        }
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    // marcadores
+    for (const r of regions) {
+      const [x, y, z] = project(r.lat * rad, r.lon * rad);
+      if (z < 0) continue;
+      const on = active?.key === r.key;
+      ctx.fillStyle = on ? accent : 'rgba(236,233,226,0.85)';
+      ctx.beginPath(); ctx.arc(x, y, on ? 3.5 : 2.5, 0, 7); ctx.fill();
+      if (on) {
+        const pulse = (t / 1800) % 1;
+        ctx.strokeStyle = accent; ctx.globalAlpha = 1 - pulse; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(x, y, 6 + pulse * 22, 0, 7); ctx.stroke(); ctx.globalAlpha = 1;
+      }
+      if (on || !active) {
+        ctx.font = '500 10px "Inter Variable", system-ui, sans-serif';
+        ctx.fillStyle = on ? accent : 'rgba(236,233,226,0.55)';
+        ctx.textAlign = 'left';
+        (ctx as any).letterSpacing = '2px';
+        ctx.fillText(r.short.toUpperCase(), x + 12, y + 3);
+        (ctx as any).letterSpacing = '0px';
+      }
+    }
+
+    lon0 = baseLon; lat0 = baseLat; // deshacer parallax para que no se acumule
+  }
+
+  if (reduce) {
+    const loop = (t: number) => { draw(t); };
+    loop(0);
+    new MutationObserver(() => loop(0)).observe(document.documentElement, { attributes: true, attributeFilter: ['data-region'] });
+    addEventListener('resize', () => loop(0));
+  } else {
+    const loop = (t: number) => { draw(t); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  }
+</script>

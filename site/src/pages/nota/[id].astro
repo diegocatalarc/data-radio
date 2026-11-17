@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { regionByKey } from '../../regions';
+
+export async function getStaticPaths() {
+  const notas = await getCollection('notas');
+  return notas.map((n) => ({ params: { id: n.id }, props: { nota: n } }));
+}
+const { nota } = Astro.props;
+const { Content } = await render(nota);
+const d = nota.data;
+const region = regionByKey[d.region];
+const date = d.date.toLocaleDateString('es-CL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title={d.title} description={d.dek} region={d.region}>
+  <div class="progress"></div>
+  <article class="article">
+    <a href="/" class="back">← Portada</a>
+    <div class="meta"><span>{region.name}</span><span>{date}</span></div>
+    <h1>{d.title}</h1>
+    <p class="dek">{d.dek}</p>
+    <div class="prose"><Content /></div>
+    <aside class="why"><h4>Por qué importa</h4><p>{d.why}</p></aside>
+    <div class="source">
+      <span>Fuente: {d.source.url === '#' ? d.source.name : <a href={d.source.url} rel="noopener" target="_blank">{d.source.name} ↗</a>}</span>
+      {d.tags.length > 0 && <span>{d.tags.join(' · ')}</span>}
+    </div>
+    {d.demo && <p class="demo-note">Esta nota es contenido de demostración para probar el diseño; no corresponde a una noticia real.</p>}
+  </article>
+</Base>

@@ -1,0 +1,59 @@
+# Configuración del pipeline Meridiano
+language: es
+
+# Proveedor de IA: deepseek | anthropic
+provider: deepseek
+
+models:                       # nombres vigentes de la API de DeepSeek; el sufijo :thinking activa el razonamiento
+  scout: deepseek-flash       # investigador: puntuar relevancia (alto volumen, barato)
+  writer: deepseek-flash      # redactor
+  reviewer: deepseek-flash:thinking   # revisor de hechos: aquí sí conviene razonar
+  editor: deepseek-flash      # editor
+  # Con anthropic: claude-haiku-5-5 (scout) y claude-sonnet-5-5 (resto)
+
+limits:
+  max_age_days: 3             # ignora noticias más antiguas
+  max_candidates: 40          # candidatas por sección enviadas al puntaje
+  min_score: 7                # umbral de relevancia (0-10). Súbelo para publicar menos.
+  max_per_section: 2          # máximo de notas por sección y ejecución
+  max_revisions: 2            # reintentos redactor <-> revisor
+  source_chars: 9000          # texto máximo de la fuente que ve el redactor/revisor
+
+# Fuentes: lista blanca. Verifica con:  python -m meridiano check-sources
+# `keywords` (opcional) filtra por palabras antes de gastar IA: útil en fuentes generalistas.
+sections:
+  cl:
+    name: Chile
+    audience: profesionales de datos y analítica en Chile
+    sources:
+      - { name: Diario Financiero, url: "https://www.df.cl/noticias/site/list/port/rss.xml", keywords: &kw_cl [datos, analítica, analitica, inteligencia artificial, algoritmo, big data, ciberseguridad, privacidad, protección de datos, estadística, banco central, ine, cmf, regulación, tecnolog, nube, software] }
+      - { name: La Tercera, url: "https://www.latercera.com/arc/outboundfeeds/rss/?outputType=xml", keywords: *kw_cl }
+      - { name: Ex-Ante, url: "https://www.ex-ante.cl/feed/" }
+      - { name: Cooperativa, url: "https://www.cooperativa.cl/noticias/site/tax/port/all/rss_3___1.xml" }
+      - { name: FayerWayer, url: "https://www.fayerwayer.com/feed/" }
+      # Banco Central, INE y CMF no ofrecen RSS utilizable; se cubren vía DF/La Tercera con filtro de palabras
+  au:
+    name: Australia
+    audience: profesionales de datos y analítica en Australia
+    sources:
+      - { name: The Conversation AU (Tech), url: "https://theconversation.com/au/technology/articles.atom" }
+      - { name: The Conversation AU (Business), url: "https://theconversation.com/au/business/articles.atom" }
+      - { name: iTnews, url: "https://www.itnews.com.au/RSS/rss.ashx" }
+      - { name: ABC News (Business), url: "https://www.abc.net.au/news/feed/2942460/rss.xml" }
+  nz:
+    name: Nueva Zelanda
+    audience: profesionales de datos y analítica en Nueva Zelanda
+    sources:
+      - { name: RNZ (Business), url: "https://www.rnz.co.nz/rss/business.xml" }
+      - { name: interest.co.nz, url: "https://www.interest.co.nz/rss" }
+      - { name: IT Brief NZ, url: "https://www.itbrief.co.nz/rss" }
+      - { name: Reseller News NZ, url: "https://www.reseller.co.nz/feed" }
+  eu:
+    name: Países Bajos & Europa
+    audience: profesionales de datos y analítica en Países Bajos y la Unión Europea
+    sources:
+      - { name: Comisión Europea · Estrategia Digital, url: "https://digital-strategy.ec.europa.eu/en/rss.xml" }
+      - { name: Autoriteit Persoonsgegevens, url: "https://www.autoriteitpersoonsgegevens.nl/rss" }
+      - { name: BCE · Comunicados, url: "https://www.ecb.europa.eu/rss/press.html" }
+      - { name: NL Times, url: "https://nltimes.nl/rss" }
+      - { name: DutchNews, url: "https://www.dutchnews.nl/feed/" }

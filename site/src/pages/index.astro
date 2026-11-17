@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { regions } from '../regions';
+
+const all = (await getCollection('notas')).sort((a, b) => +b.data.date - +a.data.date);
+const fmt = (d: Date) => d.toLocaleDateString('es-CL', { day: '2-digit', month: 'short', timeZone: 'UTC' }).replace('.', '');
+---
+<Base home>
+  <section class="hero" data-section="">
+    <div class="eyebrow rv">Análisis de datos · Cuatro mercados</div>
+    <h1 class="rv" style="--d:.1s">Los datos,<br /><em>en cuatro meridianos.</em></h1>
+    <p class="lede rv" style="--d:.25s">Chile, Australia, Nueva Zelanda y Países Bajos. Solo publicamos cuando una noticia importa de verdad para quien trabaja con datos.</p>
+    <div class="scroll-cue rv" style="--d:.4s">Desliza</div>
+  </section>
+
+  {regions.map((r, i) => {
+    const items = all.filter((n) => n.data.region === r.key).slice(0, 4);
+    return (
+      <section class="region" id={r.key} data-section={r.key}>
+        <div class="region-head">
+          <div class="idx rv">0{i + 1} / 04</div>
+          <h2 class="rv" style="--d:.08s">{r.name}</h2>
+          <p class="rv" style="--d:.16s">{r.blurb}</p>
+        </div>
+        {items.length ? (
+          <ul class="stories">
+            {items.map((n, k) => (
+              <li class="story rv" style={`--d:${0.1 + k * 0.08}s`}>
+                <a href={`/nota/${n.id}`}>
+                  <time datetime={n.data.date.toISOString()}>{fmt(n.data.date)}</time>
+                  <div>
+                    <h3>{n.data.title}</h3>{n.data.demo && <span class="badge">demo</span>}
+                    <p>{n.data.dek}</p>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="empty rv">Hoy no hay nada que valga la pena. Preferimos el silencio al ruido.</p>
+        )}
+      </section>
+    );
+  })}
+</Base>

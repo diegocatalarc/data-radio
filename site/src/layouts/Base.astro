@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import Globe from '../components/Globe.astro';
+import { regions } from '../regions';
+
+interface Props { title?: string; description?: string; region?: string; home?: boolean; }
+const { title, description = 'Lo relevante del análisis de datos en Chile, Australia, Nueva Zelanda y Europa. Solo cuando importa.', region = '', home = false } = Astro.props;
+const fullTitle = title ? `${title} — Meridiano` : 'Meridiano — Datos en cuatro meridianos';
+---
+<!doctype html>
+<html lang="es" data-region={region}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#07090d" />
+    <title>{fullTitle}</title>
+    <link rel="alternate" type="application/rss+xml" title="Meridiano" href="/rss.xml" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='7' fill='%23ff7a59'/></svg>" />
+  </head>
+  <body>
+    <div class="ambient"></div>
+    <Globe />
+    <div class="vignette"></div>
+    <div class="grain"></div>
+
+    <header class="site-header">
+      <a href="/" class="brand"><i></i>Meridiano</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="/#cl">Chile</a><a href="/#au">Australia</a><a href="/#nz">N. Zelanda</a><a href="/#eu">Europa</a><a href="/archivo">Archivo</a>
+      </nav>
+    </header>
+
+    {home && (
+      <nav class="rail" aria-label="Regiones">
+        <a href="#top" data-rail="" class="on"><span class="label">Portada</span><i></i></a>
+        {regions.map((r) => <a href={`#${r.key}`} data-rail={r.key}><span class="label">{r.short}</span><i></i></a>)}
+      </nav>
+    )}
+
+    <main id="top"><slot /></main>
+
+    <footer class="site-footer">
+      <p>Meridiano selecciona y resume noticias relevantes sobre análisis de datos. Cada nota enlaza a su fuente original y es redactada con ayuda de IA y verificada contra el texto fuente.</p>
+      <p>© {new Date().getFullYear()} Meridiano</p>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Región activa según la sección visible
+      const sections = document.querySelectorAll<HTMLElement>('[data-section]');
+      const rail = document.querySelectorAll<HTMLElement>('[data-rail]');
+      if (sections.length) {
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            const key = (e.target as HTMLElement).dataset.section || '';
+            root.dataset.region = key;
+            rail.forEach((a) => a.classList.toggle('on', a.dataset.rail === key));
+          }
+        }, { rootMargin: '-45% 0px -45% 0px' });
+        sections.forEach((s) => io.observe(s));
+      }
+
+      // Revelado suave
+      const rv = document.querySelectorAll<HTMLElement>('.rv');
+      if (reduce || !('IntersectionObserver' in window)) rv.forEach((n) => n.classList.add('in'));
+      else {
+        const io2 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io2.unobserve(e.target); } }), { threshold: 0.12 });
+        rv.forEach((n) => io2.observe(n));
+      }
+
+      // Luz que sigue al cursor
+      if (!reduce) {
+        let raf = 0;
+        addEventListener('pointermove', (e) => {
+          if (raf) return;
+          raf = requestAnimationFrame(() => {
+            root.style.setProperty('--mx', (e.clientX / innerWidth * 100).toFixed(1) + '%');
+            root.style.setProperty('--my', (e.clientY / innerHeight * 100).toFixed(1) + '%');
+            raf = 0;
+          });
+        }, { passive: true });
+      }
+
+      // Progreso de lectura (notas)
+      const bar = document.querySelector<HTMLElement>('.progress');
+      if (bar) {
+        const upd = () => {
+          const h = document.documentElement.scrollHeight - innerHeight;
+          bar.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`;
+        };
+        addEventListener('scroll', upd, { passive: true }); upd();
+      }
+    </script>
+  </body>
+</html>

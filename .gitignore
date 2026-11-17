@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.venv/
+__pycache__/
+*.egg-info/
+pipeline/.mock_out/
+pipeline/state/seen.mock.json
+.pytest_cache/

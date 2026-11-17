@@ -1,0 +1,39 @@
+name: Meridiano diario
+
+on:
+  schedule:
+    - cron: "17 10 * * *"   # todos los días 10:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e pipeline
+      - name: Ejecutar pipeline editorial
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: python -m meridiano run
+        working-directory: pipeline
+      # MODO REVISIÓN (recomendado al inicio): abre un PR; al fusionarlo, se publica.
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: notas/auto
+          title: "Notas del día"
+          commit-message: "Notas del día"
+          body: "Notas generadas por el pipeline. Revisa titular, fuente y 'por qué importa' antes de fusionar."
+          add-paths: |
+            site/src/content/notas
+            pipeline/state/seen.json
+      # MODO AUTOMÁTICO: borra el paso anterior y usa este
+      # - run: |
+      #     git config user.name "meridiano-bot" && git config user.email "bot@users.noreply.github.com"
+      #     git add site/src/content/notas pipeline/state/seen.json
+      #     git diff --cached --quiet || (git commit -m "Notas del día" && git push)
