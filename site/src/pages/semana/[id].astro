@@ -1,0 +1,51 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { regionByKey } from '../../regions';
+import { u } from '../../url';
+
+export async function getStaticPaths() {
+  const semanas = await getCollection('semanales');
+  return semanas.map((s) => ({ params: { id: s.id }, props: { semana: s } }));
+}
+const { semana } = Astro.props;
+const { Content } = await render(semana);
+const d = semana.data;
+const notas = Object.fromEntries((await getCollection('notas')).map((n) => [n.id, n]));
+const lead = notas[d.lead];
+const fmt = (x: Date) => x.toLocaleDateString('es-CL', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+---
+<Base title={d.title} description={d.dek}>
+  <div class="progress"></div>
+  <article class="article">
+    <a href={u('/semana')} class="back">← La semana</a>
+    <div class="meta"><span>Compilado semanal</span><span>{fmt(d.from)} – {fmt(d.to)}</span>{d.stats && <span>{d.stats.incluidas} notas</span>}</div>
+    <h1>{d.title}</h1>
+    <p class="dek">{d.dek}</p>
+    <div class="prose"><Content /></div>
+
+    {lead && (
+      <aside class="why">
+        <h4>Destacada</h4>
+        <p><a href={u(`/nota/${lead.id}`)}>{lead.data.title} →</a></p>
+      </aside>
+    )}
+
+    {d.themes.map((t) => (
+      <section class="weekly-theme">
+        <h2>{t.title}</h2>
+        <div class="prose"><p>{t.text}</p></div>
+        <ul class="weekly-links">
+          {t.notas.filter((id) => notas[id]).map((id) => (
+            <li>
+              <span class="region-tag">{regionByKey[notas[id].data.region].short}</span>
+              <a href={u(`/nota/${id}`)}>{notas[id].data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    {d.watch && <aside class="why"><h4>Qué vigilar</h4><p>{d.watch}</p></aside>}
+  </article>
+</Base>

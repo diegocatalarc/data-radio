@@ -228,3 +228,17 @@ main { position: relative; z-index: 5; }
 .archive h1 { font-family: var(--serif); font-weight: 300; font-variation-settings: 'opsz' 144; font-size: clamp(2.75rem, 7vw, 5.5rem); letter-spacing: -0.025em; line-height: 1; margin-bottom: 3rem; }
 .archive .stories { max-width: none; }
 .region-tag { font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+
+/* Compilado semanal */
+.weekly-theme { margin-top: 4rem; }
+.weekly-theme h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.015em; line-height: 1.15; }
+.weekly-theme .prose { margin-top: 1.25rem; }
+.weekly-links { list-style: none; margin-top: 1.5rem; display: grid; gap: 0.85rem; }
+.weekly-links li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; align-items: baseline; }
+.weekly-links a { color: var(--ink-2); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.weekly-links a:hover { border-bottom-color: var(--accent); color: var(--ink); }
+.why a { border-bottom: 1px solid var(--accent); }
+@media (max-width: 640px) { .weekly-links li { grid-template-columns: 1fr; gap: 0.2rem; } }
+.weekly-cta { display: inline-flex; flex-direction: column; gap: 0.4rem; margin-top: 2.5rem; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 2px; max-width: 34rem; transition: border-color .4s var(--ease); }
+.weekly-cta:hover { border-color: var(--accent); }
+.weekly-cta span:last-child { font-family: var(--serif); font-size: 1.15rem; line-height: 1.35; }

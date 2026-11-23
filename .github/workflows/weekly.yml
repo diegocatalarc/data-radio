@@ -1,0 +1,50 @@
+name: Meridiano semanal
+
+on:
+  schedule:
+    - cron: "47 11 * * 1"   # lunes 11:47 UTC, después del diario: compila la semana anterior
+  workflow_dispatch:
+    inputs:
+      semana:
+        description: "Semana a compilar (AAAA-Www). Vacío = la semana anterior"
+        required: false
+      force:
+        description: "Rehacer aunque ya exista"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: meridiano            # mismo grupo que el diario: nunca corren a la vez
+  cancel-in-progress: false
+
+jobs:
+  compilar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e pipeline
+      - name: Director → Editor → Montaje
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SEMANA: ${{ inputs.semana }}
+          FORCE: ${{ inputs.force && '--force' || '' }}
+        run: python -m meridiano semanal ${SEMANA:+--semana "$SEMANA"} $FORCE
+        working-directory: pipeline
+      - name: Guardar compilado
+        run: |
+          git config user.name "meridiano-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git pull --rebase --quiet
+          git add site/src/content/semanales
+          git diff --cached --quiet || (git commit -m "Compilado semanal" && git push)
+
+  publicar:
+    needs: compilar
+    uses: ./.github/workflows/deploy.yml

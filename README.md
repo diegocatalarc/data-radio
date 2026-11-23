@@ -3,9 +3,24 @@
 Sitio minimalista e inmersivo con noticias relevantes de análisis de datos en **Chile, Australia, Nueva Zelanda y Países Bajos/Europa**. Solo publica cuando algo importa.
 
 ```
-site/       Astro (estático). Notas = archivos Markdown en site/src/content/notas
-pipeline/   Python. Director → Investigador → Redactor → Revisor → Editor → Publicador
+site/       Astro (estático). Notas en site/src/content/notas, compilados en site/src/content/semanales
+pipeline/   Python, dos módulos que comparten cliente de IA y controles:
+  diario    Director → Investigador → Redactor → Revisor → Editor → Publicador   (fuentes RSS → notas)
+  semanal   Director → Editor → Montaje                                         (notas → compilado)
 ```
+
+## Compilado semanal
+Un segundo equipo que **no lee fuentes externas**: trabaja solo con las notas ya publicadas y verificadas.
+- **Director** (`semanal/director.py`): agrupa las notas en 2-5 temas transversales entre regiones, elige la destacada y omite lo menor.
+- **Editor** (`semanal/editor.py`): redacta intro, un párrafo por tema y "qué vigilar". Toda cifra debe aparecer en alguna nota; si no lo logra tras `max_revisions`, se publica una versión sin prosa nueva.
+- **Montaje** (`semanal/montaje.py`, sin IA): escribe `site/src/content/semanales/AAAA-Www.md` con los ids de las notas; el sitio arma los enlaces en `/semana/...`.
+
+```bash
+.venv/bin/python -m meridiano semanal --mock               # prueba sin IA (salida en .mock_out/semanales)
+.venv/bin/python -m meridiano semanal --semana 2026-W47    # una semana concreta (por defecto: la de ayer)
+.venv/bin/python -m meridiano semanal --force              # rehace un compilado existente
+```
+Workflow `.github/workflows/weekly.yml`: lunes 11:47 UTC, compila la semana anterior, guarda y publica. Ajustes en `weekly:` de `config.yaml`.
 
 ## Sitio
 ```bash
