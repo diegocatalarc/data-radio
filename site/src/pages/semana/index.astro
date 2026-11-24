@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { u } from '../../url';
+
+const semanas = (await getCollection('semanales')).sort((a, b) => +b.data.date - +a.data.date);
+const fmt = (d: Date) => d.toLocaleDateString('es-CL', { day: 'numeric', month: 'short', timeZone: 'UTC' }).replace('.', '');
+---
+<Base title="La semana" description="Compilado semanal de Meridiano: lo que conectó las noticias de datos de la semana.">
+  <section class="archive">
+    <h1 class="rv">La semana</h1>
+    {semanas.length ? (
+      <ul class="stories">
+        {semanas.map((s) => (
+          <li class="story rv">
+            <a href={u(`/semana/${s.id}`)}>
+              <time datetime={s.data.date.toISOString()}>{fmt(s.data.from)} – {fmt(s.data.to)}</time>
+              <div>
+                <span class="region-tag">{s.data.week}</span>
+                <h3 style="display:block;margin-top:.25rem">{s.data.title}</h3>
+                <p>{s.data.dek}</p>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="empty rv">Aún no hay compilados. El primero sale el lunes.</p>
+    )}
+  </section>
+</Base>

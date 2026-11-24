@@ -11,11 +11,15 @@ def _norm(n: str) -> str:
     return re.sub(r"[.,]+$", "", n).replace(".", "").replace(",", "")
 
 
+def numbers_not_in(text: str, source_text: str) -> list[str]:
+    """Cifras de `text` que no aparecen en `source_text`."""
+    src = {_norm(n) for n in _NUM.findall(source_text)}
+    return sorted({n for n in _NUM.findall(text) if _norm(n) and _norm(n) not in src})
+
+
 def unsupported_numbers(draft: Draft, source_text: str) -> list[str]:
     """Control determinista: toda cifra del borrador debe aparecer en la fuente."""
-    src = {_norm(n) for n in _NUM.findall(source_text)}
-    txt = " ".join([draft.title, draft.dek, draft.body, draft.why])
-    return sorted({n for n in _NUM.findall(txt) if _norm(n) and _norm(n) not in src})
+    return numbers_not_in(" ".join([draft.title, draft.dek, draft.body, draft.why]), source_text)
 
 
 def check(llm: LLM, model: str, c: Candidate, draft: Draft) -> tuple[bool, list[dict]]:

@@ -19,6 +19,15 @@ limits:
   max_revisions: 2            # reintentos redactor <-> revisor
   source_chars: 9000          # texto máximo de la fuente que ve el redactor/revisor
 
+# Compilado semanal: trabaja sobre las notas ya publicadas (python -m meridiano semanal)
+weekly:
+  models:
+    director: deepseek-flash:thinking   # agrupa en temas transversales y elige la destacada
+    editor: deepseek-flash              # redacta conectando notas; no puede inventar cifras
+  min_notes: 4                # con menos notas en la semana no se publica compilado
+  max_themes: 5
+  max_revisions: 2            # reintentos si el editor introduce cifras sin respaldo
+
 # Fuentes: lista blanca. Verifica con:  python -m meridiano check-sources
 # `keywords` (opcional) filtra por palabras antes de gastar IA: útil en fuentes generalistas.
 sections:

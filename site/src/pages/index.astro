@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import { regions } from '../regions';
 import { u } from '../url';
 
+const semana = (await getCollection('semanales')).sort((a, b) => +b.data.date - +a.data.date)[0];
 const all = (await getCollection('notas')).sort((a, b) => +b.data.date - +a.data.date);
 const fmt = (d: Date) => d.toLocaleDateString('es-CL', { day: '2-digit', month: 'short', timeZone: 'UTC' }).replace('.', '');
 ---
@@ -12,6 +13,12 @@ const fmt = (d: Date) => d.toLocaleDateString('es-CL', { day: '2-digit', month: 
     <div class="eyebrow rv">Análisis de datos · Cuatro mercados</div>
     <h1 class="rv" style="--d:.1s">Los datos,<br /><em>en cuatro meridianos.</em></h1>
     <p class="lede rv" style="--d:.25s">Chile, Australia, Nueva Zelanda y Países Bajos. Solo publicamos cuando una noticia importa de verdad para quien trabaja con datos.</p>
+    {semana && (
+      <a class="weekly-cta rv" style="--d:.35s" href={u(`/semana/${semana.id}`)}>
+        <span class="region-tag">La semana · {semana.data.week}</span>
+        <span>{semana.data.title} →</span>
+      </a>
+    )}
     <div class="scroll-cue rv" style="--d:.4s">Desliza</div>
   </section>
 
