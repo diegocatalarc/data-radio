@@ -3878,5 +3878,477 @@
  "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr261125~26d1ade228.en.html": {
   "date": "2026-11-25",
   "status": "publicada"
+ },
+ "http://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-rbscu": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "http://www.df.cl/economia-y-politica/macro/corbo-sobre-posible-intervencion-del-banco-central-frente-a-alza-del-dolar": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "http://www.df.cl/empresas/mineria/enami-extiende-en-un-mes-vigencia-de-acuerdo-con-rio-tinto-por-el-litio-en": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "http://www.df.cl/economia-y-politica/congreso/alza-del-dolar-y-caida-del-cobre-el-complicado-coctel-en-el-analisis-de-la": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "http://www.df.cl/internacional/ft/pablo-hernandez-de-cos-sera-el-proximo-presidente-del-banco-central-europeo": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "http://www.df.cl/regiones/antofagasta/empresas/brink-s-amplia-sus-operaciones-en-el-norte-con-nueva-sucursal-de-1-800": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.latercera.com/el-deportivo/noticia/el-mejor-finalizador-de-sudamerica-la-estadistica-mundial-que-consagra-a-javier-correa-y-lo-situa-sobre-zampedri/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.latercera.com/pulso/noticia/ventas-de-autos-enchufables-saltan-142-en-medio-de-alza-de-las-bencinas-pero-se-frenan-puntos-de-carga-publicos/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.latercera.com/nacional/noticia/juicio-sera-en-abril-exdiputado-francisco-pulgar-regresa-a-prision-preventiva-por-incumplir-su-arresto-domiciliario/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.latercera.com/pulso/noticia/momento-de-intervenir-el-dolar-informe-calcula-que-para-que-el-banco-central-actue-la-divisa-debe-superar-los-1110/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/afteroffice/sala-cuna-previsional-politica/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/nacional/corte-de-valparaiso-aumenta-presion-rabat/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/internacional/videos-feijoo-sanchez-duelo-moncloa/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/nacional/proyectos-generan-plusvalia-santiago/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/negocios/sala-cuna-reforma-laboral-destrabo-kast/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/afteroffice/la-comida-de-la-noche-anterior-reyes/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/internacional/estados-unidos-chile-china-advierte/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/opinion/graduacion-del-ministro-quiroz-en-politica/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/judicial/casos-emblematicos/defensa-de-ugalde-cita-seguro-de-cruz-coke-para-cuestionar-el-movil/2026-11-26/154649.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/judicial/exdiputado-francisco-pulgar-regreso-a-prision-incumplio-arresto/2026-11-26/155456.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/politica/camara-baja/acusacion-contra-rabat-a-las-ausencias-de-jiles-y-parisi-se-suman-las/2026-11-26/143340.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/region-de-valparaiso/femicidio-de-montserrat-imputado-tambien-fue-formalizado-por-violar-a/2026-11-26/141008.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/consumidores/black-friday-2026-consejos-para-cotizar-encontrar-descuentos-y-evitar/2026-11-26/133642.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/festivos/fin-de-ano/navidad-2026-un-43-de-los-chilenos-gastara-menos-en-regalos-que-en-2025/2026-11-26/133529.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/politica/partido-socialista/caso-firmas-senadores-ps-acuerdan-la-salida-de-castro-como-jefe-de-comite/2026-11-26/123947.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/judicial/campillai-presento-querella-criminal-contra-exgenerales-de-carabineros/2026-11-26/123407.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/educacion/universidades/universidad-expulso-a-estudiante-de-odontologia-tras-usar-chatgpt-en-una/2026-11-26/130658.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/region-de-tarapaca/pdi-investiga-responsabilidad-de-hospital-de-alto-hospicio-en-muerte-de/2026-11-26/115045.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/economia/sectores-productivos/agricultura/mas-de-mil-familias-afectadas-por-decision-de-iansa-de-terminar/2026-11-26/114110.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/salud/black-friday-que-pasa-en-nuestro-cerebro-ante-grandes-ofertas-y-como/2026-11-26/111900.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/economia/presupuesto/presupuesto-2027-grau-advierte-un-posible-deterioro-de-las-cuentas/2026-11-26/110644.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/ciudades/santiago/piscina-tupahue-reabrio-sus-puertas-revisa-los-precios-y-horarios/2026-11-26/113722.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.cooperativa.cl/noticias/pais/region-de-antofagasta/el-loa-carabineros-incauto-mas-de-2-3-toneladas-de-marihuana/2026-11-26/103417.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.fayerwayer.com/ciencia/2026/11/26/neuralink-obtiene-aprobacion-de-la-fda-para-un-ensayo-pivotal-de-su-implante-link-en-pacientes-con-ela-tras-mas-de-30-casos-previos/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/politica/caso-firmas-castro-contra-cuerdas-letelier/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.ex-ante.cl/nacional/danstar-malvinas-cancilleria-permiso/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://theconversation.com/is-russia-about-to-launch-a-nuclear-weapon-into-earths-orbit-a-space-law-expert-explains-the-threat-297496": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://theconversation.com/using-ai-to-hunt-for-black-friday-bargains-that-great-deal-might-not-exist-297299": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-27/aflw-grand-final-start-time-venue-kangaroos-demons-explainer/107429518": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-27/australia-rugby-tia-hinds-sevens-dubai-world-series/107432672": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/matildas-star-kyra-cooney-cross-making-mum-proud/107431272": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/nrl-scraps-all-stars-game-for-2027-preseason/107430180": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/kurtley-beale-back-in-wallabies-gold-for-ireland-test/107429998": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/david-warner-accuses-journalists-of-perpetuating-speculation/107429838": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/jenna-bruton-north-melbourne-extra-emotion-big-games/107424726": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/sydney-swans-tom-papley-driving-while-suspended-dismissed/107429248": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/jack-clayton-draws-on-afl-draft-experience-to-chase-test-debut/107429042": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://theconversation.com/76-of-australians-are-struggling-to-tell-apart-real-and-ai-content-new-report-296952": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://theconversation.com/new-study-reveals-a-close-up-of-nzs-alpine-fault-and-how-the-next-big-quake-might-unfold-297505": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://theconversation.com/as-australias-jobless-rate-rises-talk-of-a-recession-is-growing-but-thats-premature-297290": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/news/qantas-previews-finops-for-data-streaming-platform-630581?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/news/how-the-trump-administration-determined-jensen-huang-is-not-a-national-security-threat-630628?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/news/nine-trials-ai-access-to-news-via-mcp-630627?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/news/vmware-fixes-third-vcenter-auth-bypass-days-after-patching-exploited-flaw-630604?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/state-of-hr-tech-2026/state-of-hr-tech-2026-workplace-630608?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/aflw-premiership-north-melbourne-in-sight/107427680": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/wbbl-deandra-dottin-melbourne-renegades-bowled/107428262": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/nfl-aaron-rodgers-released-after-mike-mccarthy-tirade/107428264": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/nrl-rule-changes-set-restarts-hip-drops/107428162": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.abc.net.au/news/2026-11-26/justin-langer-sandpaper-usman-khawaja-pat-cummins/107428088": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/state-of-hr-tech-2026/state-of-hr-tech-2026-training-up-skilling-630575?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/state-of-hr-tech-2026/state-of-hr-tech-2026-culture-engagement-630569?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.itnews.com.au/news/coles-group-details-its-supply-chain-digital-twin-630650?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "publicada"
+ },
+ "https://www.itnews.com.au/news/flight-centre-probes-data-breach-of-third-party-booking-system-630641?utm_source=feed&utm_medium=rss&utm_campaign=iTnews+": {
+  "date": "2026-11-26",
+  "status": "publicada"
+ },
+ "https://www.rnz.co.nz/news/personal-finance/2804066/bitcoin-top-auckland-property-bottom-how-investment-returns-have-stacked-up": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/personal-finance/2805255/60-percent-of-people-feeling-less-in-control-of-their-power-bills": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/te-manu-korihi/2805226/hundreds-of-tech-leaders-join-first-ever-indigenous-tech-summit-in-wellington": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/business/2804182/wait-continues-for-new-cook-strait-ferries-after-design-unveiled": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/personal-finance/2804180/warning-ai-might-send-you-specials-that-don-t-exist": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/country/2791214/rnz-asia-business-and-technology-teams-face-cuts-as-fallout-continues": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/environment/2799873/nz-burying-valuable-energy-source-in-landfills-biogas-company-says": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/business/2789306/farmers-staff-set-to-strike-over-wage-negotiations-impasse": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/currencies/141245/risk-appetite-improved-european-stocks-rallied-tech-rebound-us-markets-were": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/economy/141242/singapore-factories-busy-korea-hikes-rates-australia-capex-boom-sp-warns-nvida": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/economy/141234/review-things-you-need-know-you-sign-thursday-westpac-trims-rate-fhb-borrowing": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/public-policy/141237/motu-research-report-eyes-emissions-trading-scheme-solutions-could-work-better": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/bonds/141230/nz-govt-bond-tender-1019-tender-date-26-nov-2026": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/public-policy/141238/when-be-ready-fridays-election-result-release-when-election-officially-over": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/property/141235/first-home-buyer-activity-down-15-october-versus-october-last-year-half-taking-out": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/insurance/141232/tower-reports-decline-annual-profit-while-gross-written-premiums-grow-620-million": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.interest.co.nz/public-policy/141231/ross-stitt-outlines-widely-variable-outcomes-big-australian-infrastructure": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/after-scarcity-what-happens-when-every-company-can-build-software": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/solving-the-phantom-roi-problem-the-next-era-of-enterprise-ai-isn-t-adoption-it-s-accountability": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/building-training-that-actually-builds-capability-in-the-age-of-ai": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/ai-spending-nearly-doubled-tech-and-finance-leaders-need-to-understand-why": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/ai-can-build-a-website-in-a-day-so-what-are-businesses-paying-for": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/from-start-up-to-scale-up-how-your-legal-needs-change-as-your-business-grows": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/ai-orchestration-is-only-half-the-equation": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/ai-joins-the-team": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/ai-gave-everyone-a-supercar-nobody-fixed-the-roads": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/business/2791565/rnz-continuing-to-manage-attempted-cyber-breach": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/business/2790865/explainer-why-air-new-zealand-is-cracking-down-on-your-carry-on-baggage": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/business/2788927/why-buying-a-used-ev-could-get-harder-next-year": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/business/2788547/aft-pharmaceutical-s-half-year-net-profit-more-than-doubles-over-year-earlier": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.rnz.co.nz/news/business/2788095/hospital-growth-powers-fisher-and-paykel-healthcare-profit-higher": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.reseller.co.nz/article/4253440/microsoft-has-an-old-but-new-idea-for-pc-upgrades-cloud-pcs-2.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.reseller.co.nz/article/4252772/nvidia-ceo-boomerang-reinforces-it-worries-about-ai-risk-exposure-4.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://itbrief.co.nz/story/your-ai-coding-agent-can-delete-the-rule-that-keeps-it-out-of-your-secrets": {
+  "date": "2026-11-26",
+  "status": "publicada"
+ },
+ "https://www.reseller.co.nz/article/4253409/meridian-takes-us30m-stake-in-datagrid.html": {
+  "date": "2026-11-26",
+  "status": "publicada"
+ },
+ "https://www.ecb.europa.eu//press/accounts/2026/html/ecb.mg261126~ccf28c8071.en.html": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/ai-use-dutch-politicians-increases-workload-municipal-officials-study-finds": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/diesel-prices-netherlands-fall-lowest-level-since-mid-july": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/police-target-600-amsterdam-taxis-investigation-suspected-money-laundering": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/lgbtqia-people-15-times-likely-experience-discrimination-rest-dutch": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/limburg-man-jailed-eight-years-sexually-abusing-245-girls-online-game": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/houten-stabbing-victim-previously-sought-help-domestic-violence-shelter": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/fmr-dutch-bank-head-klaas-knot-loses-ecb-presidency-bid-spains-hernandez-de-cos": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/netherlands-draws-line-us-plan-restrict-asml-exports-china": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/video-one-dead-one-hurt-inside-kerkrade-home-police-suspect-crime": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://nltimes.nl/2026/11/26/amsterdam-pushing-eu2-million-building-408-shared-student-housing-units": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.dutchnews.nl/2026/11/podcast-the-wolvenpolderwondermiddel-edition/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.dutchnews.nl/2026/11/new-plan-to-de-peak-public-transport/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.dutchnews.nl/2026/11/yesilgoz-under-pressure-amid-vvd-unrest-over-double-role/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.dutchnews.nl/2026/11/trump-and-rutte-call-on-russia-to-not-escalate-war-in-ukraine/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.dutchnews.nl/2026/11/new-dna-technique-brings-breakthroughs-in-cold-cases/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://www.dutchnews.nl/2026/11/majority-of-mps-back-adhd-drug-for-crack-addiction/": {
+  "date": "2026-11-26",
+  "status": "descartada"
+ },
+ "https://digital-strategy.ec.europa.eu/en/news/commission-proposes-quantum-act-and-new-sovereign-tech-equity-fund-strengthen-europes-industrial": {
+  "date": "2026-11-26",
+  "status": "publicada"
+ },
+ "https://www.dutchnews.nl/2026/11/meta-could-face-dutch-ban-on-camera-glasses-over-secret-filming/": {
+  "date": "2026-11-26",
+  "status": "publicada"
  }
 }
